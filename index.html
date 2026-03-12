@@ -117,27 +117,27 @@
         <p class="modal-sub">CIRO ESPORTS — Active Lineup</p>
       </div>
       <div class="roster-grid">
-        <div class="roster-card">
+        <div class="roster-card" onclick="showPlayerStats('Numaruel', 'valorant')" style="cursor: pointer;" title="Double-click to view stats">
           <div class="roster-avatar" style="background: linear-gradient(135deg,#1DA1FF22,#0A6CFF44)"><span class="roster-initial">N</span></div>
           <h3 class="roster-name">Numaruel</h3>
           <p class="roster-role">IGL</p>
         </div>
-        <div class="roster-card">
+        <div class="roster-card" onclick="showPlayerStats('marVxos', 'valorant')" style="cursor: pointer;" title="Double-click to view stats">
           <div class="roster-avatar" style="background: linear-gradient(135deg,#FF006E22,#C3045044)"><span class="roster-initial">M</span></div>
           <h3 class="roster-name">marVxos</h3>
           <p class="roster-role">Duelist</p>
         </div>
-        <div class="roster-card">
+        <div class="roster-card" onclick="showPlayerStats('edii', 'valorant')" style="cursor: pointer;" title="Double-click to view stats">
           <div class="roster-avatar" style="background: linear-gradient(135deg,#00D9FF22,#0099CC44)"><span class="roster-initial">E</span></div>
           <h3 class="roster-name">edii</h3>
           <p class="roster-role">Controller</p>
         </div>
-        <div class="roster-card">
+        <div class="roster-card" onclick="showPlayerStats('goonerJ67', 'valorant')" style="cursor: pointer;" title="Double-click to view stats">
           <div class="roster-avatar" style="background: linear-gradient(135deg,#FFB81C22,#FF950044)"><span class="roster-initial">G</span></div>
           <h3 class="roster-name">goonerJ67</h3>
           <p class="roster-role">Smoker</p>
         </div>
-        <div class="roster-card">
+        <div class="roster-card" onclick="showPlayerStats('ItzReallyMario', 'valorant')" style="cursor: pointer;" title="Double-click to view stats">
           <div class="roster-avatar" style="background: linear-gradient(135deg,#00FF0022,#00CC0044)"><span class="roster-initial">I</span></div>
           <h3 class="roster-name">ItzReallyMario</h3>
           <p class="roster-role">Fragger</p>
@@ -155,7 +155,7 @@
         <p class="modal-sub">CIRO ESPORTS — Active Lineup</p>
       </div>
       <div class="roster-grid">
-        <div class="roster-card">
+        <div class="roster-card" onclick="showPlayerStats('solak', 'brawlstars')" style="cursor: pointer;" title="Click to view stats">
           <div class="roster-avatar" style="background: linear-gradient(135deg,#FF006E22,#C3045044)"><span class="roster-initial">S</span></div>
           <h3 class="roster-name">solak</h3>
           <p class="roster-role">Player</p>
@@ -281,6 +281,20 @@
       <p class="footer-copy">&copy; 2026 Ciro Esports. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- PLAYER STATS MODAL -->
+  <div class="modal-overlay" id="modal-stats" onclick="closeStats()">
+    <div class="modal" onclick="event.stopPropagation()" style="max-width: 600px;">
+      <button class="modal-close" onclick="closeStats()">&times;</button>
+      <div class="modal-header" id="stats-header">
+        <h2 class="modal-title" id="stats-player-name">Player Stats</h2>
+      </div>
+      <div id="stats-content" style="padding: 20px; color: #fff;">
+        <div id="stats-tracker-link"></div>
+        <div id="stats-display"></div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

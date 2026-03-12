@@ -83,8 +83,134 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeRoster('valorant');
     closeRoster('brawlstars');
+    closeStats();
   }
 });
+
+/* ---------- PLAYER STATS MODAL ---------- */
+
+// Player stats data
+const playerStats = {
+  'Numaruel': {
+    game: 'valorant',
+    role: 'IGL',
+    useTracker: true,
+    trackerLink: 'https://tracker.gg/valorant/profile/riot/numaruell%236969/overview?platform=pc&playlist=competitive&season=3ea2b318-423b-cf86-25da-7cbb0eefbe2d'
+  },
+  'marVxos': {
+    game: 'valorant',
+    role: 'Duelist',
+    stats: {
+      'K/D Ratio': '1.32',
+      'Headshot %': '18.5%',
+      'Win Rate': '52.3%',
+      'Avg Combat Score': '245',
+      'Matches Played': '487'
+    }
+  },
+  'edii': {
+    game: 'valorant',
+    role: 'Controller',
+    stats: {
+      'K/D Ratio': '1.18',
+      'Headshot %': '14.2%',
+      'Win Rate': '51.8%',
+      'Avg Combat Score': '198',
+      'Matches Played': '512'
+    }
+  },
+  'goonerJ67': {
+    game: 'valorant',
+    role: 'Smoker',
+    stats: {
+      'K/D Ratio': '1.25',
+      'Headshot %': '16.7%',
+      'Win Rate': '50.9%',
+      'Avg Combat Score': '215',
+      'Matches Played': '468'
+    }
+  },
+  'ItzReallyMario': {
+    game: 'valorant',
+    role: 'Fragger',
+    stats: {
+      'K/D Ratio': '1.45',
+      'Headshot %': '21.3%',
+      'Win Rate': '54.1%',
+      'Avg Combat Score': '268',
+      'Matches Played': '521'
+    }
+  },
+  'solak': {
+    game: 'brawlstars',
+    role: 'Player',
+    stats: {
+      'Trophies': '28,500',
+      'Brawlers': '68/68',
+      'Win Rate': '55.2%',
+      'Avg Rank': '32',
+      'Matches Played': '3,247'
+    }
+  }
+};
+
+/**
+ * Shows player stats modal
+ * @param {string} playerName - Name of the player
+ * @param {string} game - 'valorant' or 'brawlstars'
+ */
+function showPlayerStats(playerName, game) {
+  const data = playerStats[playerName];
+  if (!data) return;
+
+  const statsOverlay = document.getElementById('modal-stats');
+  const statsHeader = document.getElementById('stats-header');
+  const statsPlayerName = document.getElementById('stats-player-name');
+  const statsTrackerLink = document.getElementById('stats-tracker-link');
+  const statsDisplay = document.getElementById('stats-display');
+
+  // Set header color based on game
+  if (game === 'valorant') {
+    statsHeader.style.background = 'linear-gradient(135deg, #1DA1FF 0%, #0A6CFF 100%)';
+  } else {
+    statsHeader.style.background = 'linear-gradient(135deg, #FF006E 0%, #C30450 100%)';
+  }
+
+  // Set player name and role
+  statsPlayerName.textContent = playerName + ' — ' + data.role;
+
+  // Handle tracker link or fake stats
+  if (data.useTracker) {
+    statsTrackerLink.innerHTML = `<p style="margin-bottom: 15px; text-align: center;"><a href="${data.trackerLink}" target="_blank" style="color: #1DA1FF; text-decoration: none; font-weight: bold;">📊 View Full Stats on Tracker.gg</a></p>`;
+    statsDisplay.innerHTML = '<p style="text-align: center; color: #aaa;">Click the link above to view detailed competitive statistics.</p>';
+  } else {
+    statsTrackerLink.innerHTML = '';
+    let statsHTML = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
+    for (const [key, value] of Object.entries(data.stats)) {
+      statsHTML += `
+        <div style="background: rgba(29, 161, 255, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #1DA1FF;">
+          <p style="margin: 0; font-size: 12px; color: #aaa; text-transform: uppercase;">${key}</p>
+          <p style="margin: 5px 0 0 0; font-size: 18px; font-weight: bold; color: #1DA1FF;">${value}</p>
+        </div>
+      `;
+    }
+    statsHTML += '</div>';
+    statsDisplay.innerHTML = statsHTML;
+  }
+
+  statsOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes the player stats modal
+ */
+function closeStats() {
+  const statsOverlay = document.getElementById('modal-stats');
+  if (!statsOverlay) return;
+  statsOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
 
 /* ---------- SMOOTH ACTIVE NAV HIGHLIGHT ---------- */
 const sections = document.querySelectorAll('section[id]');
