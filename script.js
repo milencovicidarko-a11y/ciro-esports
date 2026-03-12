@@ -143,13 +143,13 @@ const playerStats = {
   },
   'solak': {
     game: 'brawlstars',
-    role: 'Player',
+    role: 'Vice President',
     stats: {
-      'Trophies': '28,500',
-      'Brawlers': '68/68',
-      'Win Rate': '55.2%',
-      'Avg Rank': '32',
-      'Matches Played': '3,247'
+      'All-Time High': '100,002',
+      'Current Trophies': '95,161',
+      'Highest Rank': '9,147',
+      '3vs3 Victories': '19,279',
+      'Win Streak': '94'
     }
   }
 };
