@@ -954,13 +954,35 @@ ul { list-style: none; }
     flex-direction: column;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.97);
+    background: linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(15,15,15,0.99) 100%);
     align-items: center;
     justify-content: center;
     gap: 2.5rem;
-    z-index: 999;
+    z-index: 1999;
+    padding-top: 3rem;
   }
-  .nav-links.open a { font-size: 1.4rem; }
+  .nav-links.open a { font-size: 1.4rem; color: var(--white); }
+  
+  .nav-close {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 2000;
+  }
+  .nav-close:hover {
+    background: rgba(29,161,255,0.2);
+    border-color: rgba(29,161,255,0.4);
+  }
 
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .about-image { order: -1; }

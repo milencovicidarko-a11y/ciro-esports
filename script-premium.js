@@ -21,6 +21,12 @@ navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => navLinks.classList.remove('open'));
 });
 
+// Close menu when close button is clicked
+const navClose = document.getElementById('navClose');
+if (navClose) {
+  navClose.addEventListener('click', () => navLinks.classList.remove('open'));
+}
+
 /* ---------- FADE-IN ON SCROLL ---------- */
 const fadeEls = document.querySelectorAll('.fade-in');
 
@@ -159,7 +165,7 @@ const playerStats = {
       'All-Time High': '57,450',
       'Current Trophies': '52,360',
       'Highest Rank': '13,016',
-      '3vs3 Victories': '1,256',
+      '3vs3 Victories': '25,680',
       'Win Streak': '85'
     }
   }
