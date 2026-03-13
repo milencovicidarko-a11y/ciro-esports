@@ -182,9 +182,9 @@ function showPlayerStats(playerName, game) {
 
   // Set header color based on game
   if (game === 'valorant') {
-    statsHeader.style.background = 'linear-gradient(135deg, #1DA1FF 0%, #0A6CFF 100%)';
+    statsHeader.style.background = 'linear-gradient(135deg, #1DA1FF 0%, #0A6CFF 50%, #0A3CFF 100%)'; statsHeader.style.boxShadow = '0 8px 32px rgba(29, 161, 255, 0.3)';
   } else {
-    statsHeader.style.background = 'linear-gradient(135deg, #FF006E 0%, #C30450 100%)';
+    statsHeader.style.background = 'linear-gradient(135deg, #FF006E 0%, #C30450 50%, #A00040 100%)'; statsHeader.style.boxShadow = '0 8px 32px rgba(255, 0, 110, 0.3)';
   }
 
   // Set player name and role
@@ -196,12 +196,13 @@ function showPlayerStats(playerName, game) {
     statsDisplay.innerHTML = '<p style="text-align: center; color: #aaa;">Click the link above to view detailed competitive statistics.</p>';
   } else {
     statsTrackerLink.innerHTML = '';
-    let statsHTML = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">';
+    const accentColor = game === 'valorant' ? '#1DA1FF' : '#FF006E';
+    let statsHTML = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 0;">';
     for (const [key, value] of Object.entries(data.stats)) {
       statsHTML += `
-        <div style="background: rgba(29, 161, 255, 0.1); padding: 12px; border-radius: 8px; border-left: 3px solid #1DA1FF;">
-          <p style="margin: 0; font-size: 12px; color: #aaa; text-transform: uppercase;">${key}</p>
-          <p style="margin: 5px 0 0 0; font-size: 18px; font-weight: bold; color: #1DA1FF;">${value}</p>
+        <div style="background: linear-gradient(135deg, rgba(29, 161, 255, 0.15) 0%, rgba(29, 161, 255, 0.05) 100%); backdrop-filter: blur(10px); padding: 20px; border-radius: 14px; border: 1px solid rgba(29, 161, 255, 0.25); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">
+          <p style="margin: 0; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;">${key}</p>
+          <p style="margin: 12px 0 0 0; font-size: 32px; font-weight: 900; color: ${accentColor}; text-shadow: 0 0 20px rgba(29, 161, 255, 0.4); line-height: 1;">${value}</p>
         </div>
       `;
     }
