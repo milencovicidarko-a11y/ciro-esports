@@ -157,10 +157,10 @@ const playerStats = {
     role: 'Member',
     stats: {
       'All-Time High': '57,450',
-      'Season High': '56,719',
-      'Max Win Streak': '35',
-      'Highest Club League': 'Masters',
-      'Highest Team League': 'Mythic I'
+      'Current Trophies': '52,360',
+      'Highest Rank': '13,016',
+      '3vs3 Victories': '1,256',
+      'Win Streak': '85'
     }
   }
 };
