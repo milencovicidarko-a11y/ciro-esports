@@ -151,6 +151,17 @@ const playerStats = {
       '3vs3 Victories': '19,279',
       'Win Streak': '94'
     }
+  },
+  'rezon': {
+    game: 'brawlstars',
+    role: 'Member',
+    stats: {
+      'All-Time High': '57,450',
+      'Season High': '56,719',
+      'Max Win Streak': '35',
+      'Highest Club League': 'Masters',
+      'Highest Team League': 'Mythic I'
+    }
   }
 };
 
