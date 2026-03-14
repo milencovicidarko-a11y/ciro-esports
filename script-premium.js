@@ -316,3 +316,124 @@ function switchMatchTab(game) {
   );
   if (activeBtn) activeBtn.classList.add('active');
 }
+
+
+/* ---------- PLAYER PROFILE DATA ---------- */
+
+const playerProfiles = {
+  numaruel: {
+    name: 'Numaruel',
+    role: 'IGL • IN-GAME LEADER',
+    icon: '🛡️',
+    iconColor: 'rgba(200,50,80,0.3)',
+    iconBorder: 'rgba(255, 107, 53, 0.5)',
+    age: 19,
+    country: '🇪🇸',
+    countryName: 'Spain',
+    main: 'Sage',
+    about: 'The strategic mind. Numaruel has been calling strats since age 14. Born with a tactical mind that sees the map like a chess board, he leads the team through every clutch moment with ice in his veins. His calls have secured countless round wins and his presence calms the team when chaos strikes.'
+  },
+  marvxos: {
+    name: 'marVxos',
+    role: 'DUE • DUELIST',
+    icon: '🔥',
+    iconColor: 'rgba(200,100,50,0.3)',
+    iconBorder: 'rgba(255, 107, 53, 0.5)',
+    age: 21,
+    country: '🇵🇹',
+    countryName: 'Portugal',
+    main: 'Raze',
+    about: 'Aggressive and fearless. marVxos opens sites and secures kills with unmatched confidence. Known for his explosive plays and ability to create space for the team, he is the entry fragger who never backs down. His confidence is contagious and his impact is undeniable.'
+  },
+  solak: {
+    name: 'solak',
+    role: 'BST • BRAWL STARS',
+    icon: '⭐',
+    iconColor: 'rgba(100,50,150,0.3)',
+    iconBorder: 'rgba(255, 107, 53, 0.5)',
+    age: 18,
+    country: '🇪🇸',
+    countryName: 'Spain',
+    main: 'Shelly',
+    about: 'Rising star in Brawl Stars. solak climbs ranks with strategy and clutch plays when it matters most. His game sense is exceptional for his age, and he continues to improve with every match. A dedicated player who brings energy and passion to the team.'
+  },
+  coach: {
+    name: 'Coach',
+    role: 'MGR • TEAM MANAGER',
+    icon: '📋',
+    iconColor: 'rgba(50,100,200,0.3)',
+    iconBorder: 'rgba(255, 107, 53, 0.5)',
+    age: 28,
+    country: '🇪🇸',
+    countryName: 'Spain',
+    main: 'Strategy',
+    about: 'Guides the team to victory. Coach is a strategist and mentor who ensures every player reaches their peak potential. With years of competitive experience, he brings structure, discipline, and a winning mentality to Ciro Esports. His leadership is the backbone of the organization.'
+  }
+};
+
+/* ---------- PLAYER PROFILE FUNCTIONS ---------- */
+
+/**
+ * Opens the player profile modal with specific player data
+ * @param {string} playerKey - Key from playerProfiles object
+ */
+function openPlayerProfile(playerKey) {
+  const player = playerProfiles[playerKey];
+  if (!player) return;
+  
+  const modal = document.getElementById('player-profile-modal');
+  const iconContainer = document.getElementById('profile-icon-container');
+  const roleEl = document.getElementById('profile-role');
+  const nameEl = document.getElementById('profile-name');
+  const detailsEl = document.getElementById('profile-details');
+  const aboutEl = document.getElementById('about-text');
+  const iconEl = document.getElementById('profile-icon');
+  
+  // Update icon container background
+  iconContainer.style.background = `linear-gradient(135deg, ${player.iconColor} 0%, rgba(150,30,60,0.1) 100%)`;
+  iconContainer.style.borderColor = player.iconBorder;
+  
+  // Update content
+  iconEl.textContent = player.icon;
+  roleEl.textContent = player.role;
+  nameEl.textContent = player.name;
+  detailsEl.textContent = `Age: ${player.age} • ${player.country} ${player.countryName} • Main: ${player.main}`;
+  aboutEl.textContent = player.about;
+  
+  // Show modal
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes the player profile modal
+ */
+function closePlayerProfile() {
+  const modal = document.getElementById('player-profile-modal');
+  modal.classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+/* ---------- DOUBLE-CLICK HANDLERS FOR TEAM CARDS ---------- */
+
+// Initialize double-click handlers when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  const teamCards = document.querySelectorAll('.team-card-modern');
+  
+  teamCards.forEach((card, index) => {
+    const playerKeys = ['numaruel', 'marvxos', 'solak', 'coach'];
+    const playerKey = playerKeys[index];
+    
+    card.addEventListener('dblclick', function() {
+      openPlayerProfile(playerKey);
+    });
+  });
+});
+
+// Close profile when clicking outside
+document.addEventListener('click', function(e) {
+  const modal = document.getElementById('player-profile-modal');
+  if (e.target === modal) {
+    closePlayerProfile();
+  }
+});

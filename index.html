@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CIRO ESPORTS</title>
   <link rel="icon" type="image/jpeg" href="logo.jpg" />
-  <link rel="stylesheet" href="style-premium.css?v=13" />
+  <link rel="stylesheet" href="style-premium.css?v=14" />
 </head>
 <body>
   <nav class="navbar" id="navbar">
@@ -444,6 +444,32 @@
     </div>
   </footer>
 
+  <!-- PLAYER PROFILE MODAL -->
+  <div class="player-profile-modal" id="player-profile-modal">
+    <div class="profile-header">
+      <button class="profile-back-btn" onclick="closePlayerProfile()">&larr; Back to Team</button>
+      <span class="profile-title">Player Profile</span>
+      <div></div>
+    </div>
+    
+    <div class="profile-content">
+      <div class="profile-icon-container" id="profile-icon-container">
+        <span class="profile-icon" id="profile-icon">🛡️</span>
+      </div>
+      
+      <div class="profile-info">
+        <p class="profile-role" id="profile-role">IGL • IN-GAME LEADER</p>
+        <h1 class="profile-name" id="profile-name">Player Name</h1>
+        <p class="profile-details" id="profile-details">Age: 19 • 🇺🇸 USA • Main: Brimstone</p>
+      </div>
+      
+      <div class="profile-about">
+        <h3 class="about-title">ABOUT</h3>
+        <p class="about-text" id="about-text">Player biography goes here...</p>
+      </div>
+    </div>
+  </div>
+
   <!-- PLAYER STATS MODAL -->
   <div class="modal-overlay" id="modal-stats" onclick="closeStats()">
     <div class="modal" onclick="event.stopPropagation()" style="max-width: 600px;">
@@ -458,6 +484,6 @@
     </div>
   </div>
 
-  <script src="script-premium.js?v=13"></script>
+  <script src="script-premium.js?v=14"></script>
 </body>
 </html>

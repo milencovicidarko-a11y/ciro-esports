@@ -1386,3 +1386,211 @@ ul { list-style: none; }
     padding: 0.5rem 0.3rem;
   }
 }
+
+
+/* ========== PLAYER PROFILE MODAL ========== */
+.player-profile-modal {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 3000;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: slideInUp 0.4s ease;
+}
+
+.player-profile-modal.active {
+  display: flex;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(29, 161, 255, 0.2);
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.profile-back-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-back-btn:hover {
+  color: #1DA1FF;
+}
+
+.profile-title {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.profile-content {
+  padding: 2rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-icon-container {
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  border: 2px solid;
+  background: linear-gradient(135deg, rgba(200,50,80,0.2) 0%, rgba(150,30,60,0.1) 100%);
+  border-color: rgba(255, 107, 53, 0.5);
+  box-shadow: 0 0 40px rgba(255, 107, 53, 0.3), inset 0 0 20px rgba(255, 107, 53, 0.1);
+}
+
+.profile-icon {
+  font-size: 4rem;
+}
+
+.profile-info {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF6B35;
+  margin: 0 0 0.8rem 0;
+}
+
+.profile-name {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 1rem 0;
+  text-transform: none;
+}
+
+.profile-details {
+  font-size: 1rem;
+  color: #888;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.profile-about {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(10, 10, 20, 0.6);
+  border: 1px solid rgba(29, 161, 255, 0.25);
+  border-radius: 16px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.about-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FF6B35;
+  margin: 0 0 1.2rem 0;
+}
+
+.about-text {
+  font-size: 1rem;
+  color: #aaa;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ========== RESPONSIVE PLAYER PROFILE ========== */
+@media (max-width: 768px) {
+  .profile-header {
+    padding: 1rem;
+  }
+
+  .profile-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .profile-icon-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-icon {
+    font-size: 3rem;
+  }
+
+  .profile-name {
+    font-size: 2rem;
+  }
+
+  .profile-about {
+    padding: 1.5rem;
+  }
+
+  .about-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-icon-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-icon {
+    font-size: 2.5rem;
+  }
+
+  .profile-name {
+    font-size: 1.6rem;
+  }
+
+  .profile-details {
+    font-size: 0.9rem;
+  }
+
+  .profile-about {
+    padding: 1.2rem;
+  }
+
+  .about-text {
+    font-size: 0.85rem;
+  }
+}
