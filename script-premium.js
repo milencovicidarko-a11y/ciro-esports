@@ -334,7 +334,8 @@ const playerProfiles = {
     level: 156,
     peakRank: 'Diamond',
     currentRank: 'Platinum',
-    about: 'The strategic mind. Numaruel has been calling strats since age 14. Born with a tactical mind that sees the map like a chess board, he leads the team through every clutch moment with ice in his veins. His calls have secured countless round wins and his presence calms the team when chaos strikes.'
+    about: 'The strategic mind. Numaruel has been calling strats since age 14. Born with a tactical mind that sees the map like a chess board, he leads the team through every clutch moment with ice in his veins. His calls have secured countless round wins and his presence calms the team when chaos strikes.',
+    achievements: ['Regional Champion 2025', 'Top IGL Award', '6x MVP']
   },
   marvxos: {
     name: 'marVxos',
@@ -349,7 +350,8 @@ const playerProfiles = {
     level: 77,
     peakRank: 'Platinum',
     currentRank: 'Platinum',
-    about: 'Aggressive and fearless. marVxos opens sites and secures kills with unmatched confidence. Known for his explosive plays and ability to create space for the team, he is the entry fragger who never backs down. His confidence is contagious and his impact is undeniable.'
+    about: 'Aggressive and fearless. marVxos opens sites and secures kills with unmatched confidence. Known for his explosive plays and ability to create space for the team, he is the entry fragger who never backs down. His confidence is contagious and his impact is undeniable.',
+    achievements: ['Best Entry Fragger 2025', 'Tournament MVP', '3x Pentakill Record']
   },
   solak: {
     name: 'solak',
@@ -361,7 +363,8 @@ const playerProfiles = {
     country: '🇪🇸',
     countryName: 'Spain',
     main: 'Shelly',
-    about: 'Rising star in Brawl Stars. solak climbs ranks with strategy and clutch plays when it matters most. His game sense is exceptional for his age, and he continues to improve with every match. A dedicated player who brings energy and passion to the team.'
+    about: 'Rising star in Brawl Stars. solak climbs ranks with strategy and clutch plays when it matters most. His game sense is exceptional for his age, and he continues to improve with every match. A dedicated player who brings energy and passion to the team.',
+    achievements: ['Rising Star 2025', 'Rank Climber Award', 'Team Player']
   },
   coach: {
     name: 'Coach',
@@ -373,7 +376,8 @@ const playerProfiles = {
     country: '🇪🇸',
     countryName: 'Spain',
     main: 'Strategy',
-    about: 'Guides the team to victory. Coach is a strategist and mentor who ensures every player reaches their peak potential. With years of competitive experience, he brings structure, discipline, and a winning mentality to Ciro Esports. His leadership is the backbone of the organization.'
+    about: 'Guides the team to victory. Coach is a strategist and mentor who ensures every player reaches their peak potential. With years of competitive experience, he brings structure, discipline, and a winning mentality to Ciro Esports. His leadership is the backbone of the organization.',
+    achievements: ['Coaching Excellence Award', 'Team Builder 2025', 'Strategic Mastermind']
   },
   edii: {
     name: 'edii',
@@ -388,7 +392,8 @@ const playerProfiles = {
     level: 86,
     peakRank: 'Diamond',
     currentRank: 'Platinum',
-    about: 'Master of smoke and control. edii excels at setting up defensive positions and creating safe spaces for the team. His utility usage is precise and his map control is exceptional. A steady presence that anchors Valorant rounds.'
+    about: 'Master of smoke and control. edii excels at setting up defensive positions and creating safe spaces for the team. His utility usage is precise and his map control is exceptional. A steady presence that anchors Valorant rounds.',
+    achievements: ['Best Utility Usage', 'Map Control Master', '2x Tournament Winner']
   },
   goonerj67: {
     name: 'goonerJ67',
@@ -403,7 +408,8 @@ const playerProfiles = {
     level: 50,
     peakRank: 'Platinum',
     currentRank: 'Gold',
-    about: 'Smoke specialist with incredible game sense. goonerJ67 controls the tempo of rounds with perfectly timed smokes and rotations. His ability to read the enemy and adapt is unmatched. A crucial piece of the Valorant roster.'
+    about: 'Smoke specialist with incredible game sense. goonerJ67 controls the tempo of rounds with perfectly timed smokes and rotations. His ability to read the enemy and adapt is unmatched. A crucial piece of the Valorant roster.',
+    achievements: ['Smoke Specialist Award', 'Rising Star 2025', 'Best Rotations']
   },
   itzmario: {
     name: 'ItzReallyMario',
@@ -418,7 +424,8 @@ const playerProfiles = {
     level: 31,
     peakRank: 'Gold',
     currentRank: 'Gold',
-    about: 'High-impact fragger with explosive potential. ItzReallyMario brings raw firepower and mechanical skill to every round. His aggressive plays create opportunities for the team and his clutch moments have secured countless victories.'
+    about: 'High-impact fragger with explosive potential. ItzReallyMario brings raw firepower and mechanical skill to every round. His aggressive plays create opportunities for the team and his clutch moments have secured countless victories.',
+    achievements: ['Clutch Plays Award', 'Mechanical Skill Master', 'Tournament Finalist']
   },
   rezon: {
     name: 'rezon',
@@ -471,6 +478,18 @@ function openPlayerProfile(playerKey) {
   if (player.currentRank) currentRankEl.textContent = player.currentRank;
   
   aboutEl.textContent = player.about;
+  
+  // Update achievements
+  const achievementsList = document.getElementById('achievements-list');
+  if (player.achievements && achievementsList) {
+    achievementsList.innerHTML = '';
+    player.achievements.forEach(achievement => {
+      const achievementItem = document.createElement('div');
+      achievementItem.className = 'achievement-item';
+      achievementItem.innerHTML = `<span class="achievement-icon">🏅</span><span class="achievement-text">${achievement}</span>`;
+      achievementsList.appendChild(achievementItem);
+    });
+  }
   
   // Show modal
   modal.classList.add('active');

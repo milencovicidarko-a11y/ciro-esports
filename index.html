@@ -463,24 +463,37 @@
         <p class="profile-details" id="profile-details">Age: 19 • 🇺🇸 USA • Main: Brimstone</p>
       </div>
       
-      <div class="profile-stats">
-        <div class="stat-item">
-          <span class="stat-label">LEVEL</span>
-          <span class="stat-value" id="profile-level">156</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">PEAK RANK</span>
-          <span class="stat-value" id="profile-peak-rank">Diamond</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-label">CURRENT RANK</span>
-          <span class="stat-value" id="profile-current-rank">Platinum</span>
-        </div>
-      </div>
-      
       <div class="profile-about">
         <h3 class="about-title">ABOUT</h3>
         <p class="about-text" id="about-text">Player biography goes here...</p>
+      </div>
+      
+      <div class="profile-stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-card-value" id="profile-level">156</div>
+          <div class="stat-card-label">Level</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-card-value" id="profile-peak-rank">Diamond</div>
+          <div class="stat-card-label">Peak Rank</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-card-value" id="profile-current-rank">Platinum</div>
+          <div class="stat-card-label">Current Rank</div>
+        </div>
+      </div>
+      
+      <div class="profile-achievements">
+        <h3 class="achievements-title">ACHIEVEMENTS</h3>
+        <div class="achievements-list" id="achievements-list">
+          <div class="achievement-item">
+            <span class="achievement-icon">🏅</span>
+            <span class="achievement-text">Regional Champion 2025</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -499,6 +512,6 @@
     </div>
   </div>
 
-  <script src="script-premium.js?v=17"></script>
+  <script src="script-premium.js?v=18"></script>
 </body>
 </html>
