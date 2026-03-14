@@ -368,6 +368,54 @@ const playerProfiles = {
     countryName: 'Spain',
     main: 'Strategy',
     about: 'Guides the team to victory. Coach is a strategist and mentor who ensures every player reaches their peak potential. With years of competitive experience, he brings structure, discipline, and a winning mentality to Ciro Esports. His leadership is the backbone of the organization.'
+  },
+  edii: {
+    name: 'edii',
+    role: 'CTR • CONTROLLER',
+    icon: '🌀',
+    iconColor: 'rgba(0,217,255,0.3)',
+    iconBorder: 'rgba(0, 217, 255, 0.5)',
+    age: 20,
+    country: '🇩🇪',
+    countryName: 'Germany',
+    main: 'Viper',
+    about: 'Master of smoke and control. edii excels at setting up defensive positions and creating safe spaces for the team. His utility usage is precise and his map control is exceptional. A steady presence that anchors Valorant rounds.'
+  },
+  goonerj67: {
+    name: 'goonerJ67',
+    role: 'SMK • SMOKER',
+    icon: '💨',
+    iconColor: 'rgba(255, 184, 28, 0.3)',
+    iconBorder: 'rgba(255, 184, 28, 0.5)',
+    age: 19,
+    country: '🇬🇧',
+    countryName: 'United Kingdom',
+    main: 'Omen',
+    about: 'Smoke specialist with incredible game sense. goonerJ67 controls the tempo of rounds with perfectly timed smokes and rotations. His ability to read the enemy and adapt is unmatched. A crucial piece of the Valorant roster.'
+  },
+  itzmario: {
+    name: 'ItzReallyMario',
+    role: 'FRG • FRAGGER',
+    icon: '⚡',
+    iconColor: 'rgba(0, 255, 0, 0.3)',
+    iconBorder: 'rgba(0, 255, 0, 0.5)',
+    age: 21,
+    country: '🇮🇹',
+    countryName: 'Italy',
+    main: 'Jett',
+    about: 'High-impact fragger with explosive potential. ItzReallyMario brings raw firepower and mechanical skill to every round. His aggressive plays create opportunities for the team and his clutch moments have secured countless victories.'
+  },
+  rezon: {
+    name: 'rezon',
+    role: 'BST • BRAWL STARS',
+    icon: '🎯',
+    iconColor: 'rgba(255, 149, 0, 0.3)',
+    iconBorder: 'rgba(255, 149, 0, 0.5)',
+    age: 17,
+    country: '🇪🇸',
+    countryName: 'Spain',
+    main: 'Colt',
+    about: 'Young and talented Brawl Stars player. rezon shows incredible promise with sharp mechanical skills and strong game awareness. Despite his age, he competes at the highest level and continues to develop his craft.'
   }
 };
 
