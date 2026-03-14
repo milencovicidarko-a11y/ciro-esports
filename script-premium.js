@@ -246,3 +246,73 @@ document.addEventListener('keydown', (e) => {
     closePlayerStats();
   }
 });
+
+
+/* ---------- ROSTER MODAL FUNCTIONS ---------- */
+
+/**
+ * Opens the roster modal for a specific game
+ * @param {string} game - 'valorant' or 'brawlstars'
+ */
+function openRoster(game) {
+  const modal = document.getElementById(`modal-${game}`);
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+/**
+ * Closes the roster modal for a specific game
+ * @param {string} game - 'valorant' or 'brawlstars'
+ */
+function closeRoster(game) {
+  const modal = document.getElementById(`modal-${game}`);
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+/**
+ * Closes player stats modal
+ */
+function closeStats() {
+  const statsOverlay = document.getElementById('modal-stats');
+  if (statsOverlay) {
+    statsOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+}
+
+
+/* ---------- MATCH HISTORY TAB SWITCHING ---------- */
+
+/**
+ * Switches between match history tabs
+ * @param {string} game - 'valorant' or 'brawlstars'
+ */
+function switchMatchTab(game) {
+  // Hide all tables
+  const valorantTable = document.getElementById('valorant-matches');
+  const brawlstarsTable = document.getElementById('brawlstars-matches');
+  
+  if (valorantTable) valorantTable.style.display = 'none';
+  if (brawlstarsTable) brawlstarsTable.style.display = 'none';
+  
+  // Show selected table
+  if (game === 'valorant' && valorantTable) {
+    valorantTable.style.display = 'table';
+  } else if (game === 'brawlstars' && brawlstarsTable) {
+    brawlstarsTable.style.display = 'table';
+  }
+  
+  // Update active tab button
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  
+  const activeBtn = Array.from(tabButtons).find(btn => 
+    btn.textContent.toLowerCase().includes(game === 'valorant' ? 'valorant' : 'brawl')
+  );
+  if (activeBtn) activeBtn.classList.add('active');
+}

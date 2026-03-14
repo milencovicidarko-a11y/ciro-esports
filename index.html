@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CIRO ESPORTS</title>
   <link rel="icon" type="image/jpeg" href="logo.jpg" />
-  <link rel="stylesheet" href="style-premium.css?v=11" />
+  <link rel="stylesheet" href="style-premium.css?v=12" />
 </head>
 <body>
   <nav class="navbar" id="navbar">
@@ -248,6 +248,152 @@
     </div>
   </section>
 
+  <!-- LIVE STREAM SECTION -->
+  <section class="livestream section" id="livestream">
+    <div class="container">
+      <p class="section-label center">WATCH LIVE</p>
+      <h2 class="section-title center">LIVE STREAMS</h2>
+      <p class="section-sub center">Catch our teams in action on Twitch</p>
+      <div class="livestream-grid">
+        <div class="livestream-card fade-in">
+          <div class="livestream-placeholder">
+            <div class="livestream-icon">📺</div>
+            <p class="livestream-status">OFFLINE</p>
+          </div>
+          <div class="livestream-info">
+            <h3 class="livestream-title">Valorant Team Stream</h3>
+            <p class="livestream-desc">Watch our Valorant roster compete in tournaments and scrimmages</p>
+            <a href="https://www.twitch.tv/ciroesports" target="_blank" class="btn btn-sm">WATCH ON TWITCH</a>
+          </div>
+        </div>
+        <div class="livestream-card fade-in">
+          <div class="livestream-placeholder">
+            <div class="livestream-icon">🎮</div>
+            <p class="livestream-status">OFFLINE</p>
+          </div>
+          <div class="livestream-info">
+            <h3 class="livestream-title">Brawl Stars Team Stream</h3>
+            <p class="livestream-desc">Follow our Brawl Stars team as they climb the ranks and compete</p>
+            <a href="https://www.twitch.tv/ciroesports" target="_blank" class="btn btn-sm">WATCH ON TWITCH</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MATCH HISTORY SECTION -->
+  <section class="matches section" id="matches">
+    <div class="container">
+      <p class="section-label center">RECENT RESULTS</p>
+      <h2 class="section-title center">MATCH HISTORY</h2>
+      <p class="section-sub center">Latest tournament and competitive results</p>
+      <div class="matches-container">
+        <div class="matches-tabs">
+          <button class="tab-btn active" onclick="switchMatchTab('valorant')">VALORANT</button>
+          <button class="tab-btn" onclick="switchMatchTab('brawlstars')">BRAWL STARS</button>
+        </div>
+        <div class="matches-table-wrapper">
+          <table class="matches-table" id="valorant-matches">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Tournament</th>
+                <th>Opponent</th>
+                <th>Result</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="match-win">
+                <td>March 12, 2026</td>
+                <td>EU Regional Qualifier</td>
+                <td>Phoenix Rising</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>2 - 0</td>
+              </tr>
+              <tr class="match-win">
+                <td>March 10, 2026</td>
+                <td>Weekly Scrim</td>
+                <td>Team Apex</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>2 - 1</td>
+              </tr>
+              <tr class="match-loss">
+                <td>March 8, 2026</td>
+                <td>EU Regional Qualifier</td>
+                <td>Fnatic Academy</td>
+                <td><span class="badge-loss">LOSS</span></td>
+                <td>0 - 2</td>
+              </tr>
+              <tr class="match-win">
+                <td>March 5, 2026</td>
+                <td>Weekly Scrim</td>
+                <td>Team Vitality</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>2 - 0</td>
+              </tr>
+              <tr class="match-win">
+                <td>March 1, 2026</td>
+                <td>Open Qualifier</td>
+                <td>Rising Stars</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>2 - 1</td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="matches-table" id="brawlstars-matches" style="display: none;">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Tournament</th>
+                <th>Opponent</th>
+                <th>Result</th>
+                <th>Trophies Won</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="match-win">
+                <td>March 13, 2026</td>
+                <td>Regional Championship</td>
+                <td>Brawl Legends</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>+145</td>
+              </tr>
+              <tr class="match-win">
+                <td>March 11, 2026</td>
+                <td>Weekly Showdown</td>
+                <td>Elite Squad</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>+98</td>
+              </tr>
+              <tr class="match-loss">
+                <td>March 9, 2026</td>
+                <td>Regional Championship</td>
+                <td>Pro Gamers</td>
+                <td><span class="badge-loss">LOSS</span></td>
+                <td>-67</td>
+              </tr>
+              <tr class="match-win">
+                <td>March 6, 2026</td>
+                <td>Weekly Showdown</td>
+                <td>Star Chasers</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>+156</td>
+              </tr>
+              <tr class="match-win">
+                <td>March 2, 2026</td>
+                <td>Friendly Match</td>
+                <td>Rising Stars</td>
+                <td><span class="badge-win">WIN</span></td>
+                <td>+112</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="community section" id="community">
     <div class="container">
       <p class="section-label center">JOIN OUR</p>
@@ -297,6 +443,6 @@
     </div>
   </div>
 
-  <script src="script-premium.js?v=11"></script>
+  <script src="script-premium.js?v=12"></script>
 </body>
 </html>
