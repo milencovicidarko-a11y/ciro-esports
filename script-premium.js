@@ -1,14 +1,7 @@
-/* ============================================================
-   CIRO ESPORTS — MAIN JAVASCRIPT
-   ============================================================ */
+/* ========== CIRO ESPORTS - PREMIUM SCRIPT ========== */
 
-/* ---------- NAVBAR SCROLL ---------- */
+/* ---------- NAVBAR SCROLL EFFECT ---------- */
 const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-/* ---------- HAMBURGER MENU ---------- */
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
 
@@ -29,67 +22,25 @@ if (navClose) {
 
 /* ---------- FADE-IN ON SCROLL ---------- */
 const fadeEls = document.querySelectorAll('.fade-in');
-
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
+  entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // Stagger siblings slightly
-      const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
-      let delay = 0;
-      siblings.forEach((sib, idx) => {
-        if (sib === entry.target) delay = idx * 100;
-      });
-      setTimeout(() => {
-        entry.target.classList.add('visible');
-      }, delay);
-      observer.unobserve(entry.target);
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.1 });
 
 fadeEls.forEach(el => observer.observe(el));
 
-/* ---------- ROSTER MODAL (DOUBLE-CLICK) ---------- */
-
-/**
- * Opens the roster modal for a given game.
- * @param {string} game  - 'valorant' or 'brawlstars'
- */
-function openRoster(game) {
-  const overlay = document.getElementById('modal-' + game);
-  if (!overlay) return;
-
-  // Animate card flash
-  const card = document.getElementById('card-' + game);
-  if (card) {
-    card.style.transition = 'box-shadow 0.15s ease';
-    card.style.boxShadow = '0 0 0 3px #1DA1FF, 0 0 40px rgba(29,161,255,0.5)';
-    setTimeout(() => {
-      card.style.boxShadow = '';
-    }, 400);
-  }
-
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-/**
- * Closes the roster modal for a given game.
- * @param {string} game  - 'valorant' or 'brawlstars'
- */
-function closeRoster(game) {
-  const overlay = document.getElementById('modal-' + game);
-  if (!overlay) return;
-  overlay.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Close modals on Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeRoster('valorant');
-    closeRoster('brawlstars');
-    closeStats();
+/* ---------- SMOOTH SCROLL NAVBAR ---------- */
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+    navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.5)';
+  } else {
+    navbar.style.background = 'rgba(0, 0, 0, 0.7)';
+    navbar.style.boxShadow = 'none';
   }
 });
 
@@ -100,12 +51,18 @@ const playerStats = {
   'Numaruel': {
     game: 'valorant',
     role: 'IGL',
+    age: 24,
+    nationality: 'Spain',
+    signatureMove: 'Sage Teleport Plays',
     useTracker: true,
     trackerLink: 'https://tracker.gg/valorant/profile/riot/numaruell%236969/overview?platform=pc&playlist=competitive&season=3ea2b318-423b-cf86-25da-7cbb0eefbe2d'
   },
   'marVxos': {
     game: 'valorant',
     role: 'Duelist',
+    age: 22,
+    nationality: 'Portugal',
+    signatureMove: 'Raze Satchel Rush',
     stats: {
       'K/D Ratio': '1.32',
       'Headshot %': '18.5%',
@@ -117,6 +74,9 @@ const playerStats = {
   'edii': {
     game: 'valorant',
     role: 'Controller',
+    age: 25,
+    nationality: 'Germany',
+    signatureMove: 'Viper Lineups',
     stats: {
       'K/D Ratio': '1.18',
       'Headshot %': '14.2%',
@@ -128,6 +88,9 @@ const playerStats = {
   'goonerJ67': {
     game: 'valorant',
     role: 'Smoker',
+    age: 23,
+    nationality: 'France',
+    signatureMove: 'Omen Teleport Escapes',
     stats: {
       'K/D Ratio': '1.25',
       'Headshot %': '16.7%',
@@ -139,6 +102,9 @@ const playerStats = {
   'ItzReallyMario': {
     game: 'valorant',
     role: 'Fragger',
+    age: 21,
+    nationality: 'Italy',
+    signatureMove: 'Jett Dash Duels',
     stats: {
       'K/D Ratio': '1.45',
       'Headshot %': '21.3%',
@@ -150,6 +116,9 @@ const playerStats = {
   'solak': {
     game: 'brawlstars',
     role: 'Vice President',
+    age: 26,
+    nationality: 'Turkey',
+    signatureMove: 'Aggressive Brawler Play',
     stats: {
       'All-Time High': '100,002',
       'Current Trophies': '95,161',
@@ -161,6 +130,9 @@ const playerStats = {
   'rezon': {
     game: 'brawlstars',
     role: 'Member',
+    age: 20,
+    nationality: 'Poland',
+    signatureMove: 'Mortis Combo Master',
     stats: {
       'All-Time High': '57,450',
       'Current Trophies': '52,360',
@@ -172,7 +144,7 @@ const playerStats = {
 };
 
 /**
- * Shows player stats modal
+ * Shows player stats modal with full-screen Information Age design
  * @param {string} playerName - Name of the player
  * @param {string} game - 'valorant' or 'brawlstars'
  */
@@ -181,41 +153,72 @@ function showPlayerStats(playerName, game) {
   if (!data) return;
 
   const statsOverlay = document.getElementById('modal-stats');
-  const statsHeader = document.getElementById('stats-header');
-  const statsPlayerName = document.getElementById('stats-player-name');
-  const statsTrackerLink = document.getElementById('stats-tracker-link');
-  const statsDisplay = document.getElementById('stats-display');
+  const accentColor = game === 'valorant' ? '#1DA1FF' : '#FF006E';
 
-  // Set header color based on game
-  if (game === 'valorant') {
-    statsHeader.style.background = 'linear-gradient(135deg, #1DA1FF 0%, #0A6CFF 50%, #0A3CFF 100%)'; statsHeader.style.boxShadow = '0 8px 32px rgba(29, 161, 255, 0.3)';
-  } else {
-    statsHeader.style.background = 'linear-gradient(135deg, #FF006E 0%, #C30450 50%, #A00040 100%)'; statsHeader.style.boxShadow = '0 8px 32px rgba(255, 0, 110, 0.3)';
-  }
-
-  // Set player name and role
-  statsPlayerName.textContent = playerName + ' — ' + data.role;
-
-  // Handle tracker link or fake stats
+  // Build full-screen player card HTML
+  let playerCardHTML = `
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0,0,0,0.9) 0%, rgba(10,10,30,0.95) 100%); display: flex; align-items: center; justify-content: center; z-index: 9999; animation: fadeIn 0.4s ease-out; overflow-y: auto;">
+      <div style="position: relative; width: 90%; max-width: 900px; background: rgba(10, 10, 20, 0.85); backdrop-filter: blur(20px); border: 2px solid ${accentColor}; border-radius: 20px; padding: 50px; box-shadow: 0 0 60px ${accentColor}40, inset 0 0 30px rgba(255,255,255,0.05); animation: slideUp 0.5s ease-out; margin: 50px auto;">
+        <!-- Close Button -->
+        <button onclick="document.getElementById('modal-stats').classList.remove('active')" style="position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.1); border: 1px solid ${accentColor}; color: ${accentColor}; width: 40px; height: 40px; border-radius: 50%; font-size: 24px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; z-index: 10000;" onmouseover="this.style.background='${accentColor}20'; this.style.transform='scale(1.1)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='scale(1)'">✕</button>
+        
+        <!-- Player Header -->
+        <div style="text-align: center; margin-bottom: 40px; border-bottom: 2px solid ${accentColor}; padding-bottom: 30px;">
+          <h1 style="margin: 0 0 10px 0; font-size: 48px; font-weight: 900; color: ${accentColor}; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 30px ${accentColor}40;">${playerName}</h1>
+          <p style="margin: 0; font-size: 18px; color: #aaa; text-transform: uppercase; letter-spacing: 1px;">${data.role}</p>
+        </div>
+        
+        <!-- Player Information Grid -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 35px;">
+          <div style="background: linear-gradient(135deg, ${accentColor}15 0%, ${accentColor}05 100%); padding: 20px; border-radius: 12px; border-left: 4px solid ${accentColor}; text-align: center;">
+            <p style="margin: 0 0 10px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px;">Age</p>
+            <p style="margin: 0; font-size: 32px; font-weight: 900; color: ${accentColor};">${data.age}</p>
+          </div>
+          <div style="background: linear-gradient(135deg, ${accentColor}15 0%, ${accentColor}05 100%); padding: 20px; border-radius: 12px; border-left: 4px solid ${accentColor}; text-align: center;">
+            <p style="margin: 0 0 10px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px;">Nationality</p>
+            <p style="margin: 0; font-size: 28px; font-weight: 900; color: ${accentColor};">${data.nationality}</p>
+          </div>
+          <div style="background: linear-gradient(135deg, ${accentColor}15 0%, ${accentColor}05 100%); padding: 20px; border-radius: 12px; border-left: 4px solid ${accentColor}; text-align: center;">
+            <p style="margin: 0 0 10px 0; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px;">Signature Move</p>
+            <p style="margin: 0; font-size: 16px; font-weight: 700; color: ${accentColor};">${data.signatureMove}</p>
+          </div>
+        </div>
+        
+        <!-- Performance Stats -->
+        <div style="margin-top: 35px;">
+          <h3 style="margin: 0 0 20px 0; font-size: 16px; color: #aaa; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Performance Stats</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">`;
+  
   if (data.useTracker) {
-    statsTrackerLink.innerHTML = `<p style="margin-bottom: 15px; text-align: center;"><a href="${data.trackerLink}" target="_blank" style="color: #1DA1FF; text-decoration: none; font-weight: bold;">📊 View Full Stats on Tracker.gg</a></p>`;
-    statsDisplay.innerHTML = '<p style="text-align: center; color: #aaa;">Click the link above to view detailed competitive statistics.</p>';
+    playerCardHTML += `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 30px;">
+        <p style="margin: 0 0 15px 0; font-size: 16px; color: #ccc;">📊 View Full Stats on Tracker.gg</p>
+        <a href="${data.trackerLink}" target="_blank" style="display: inline-block; padding: 15px 40px; background: linear-gradient(135deg, ${accentColor} 0%, ${accentColor}cc 100%); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s; box-shadow: 0 0 20px ${accentColor}40;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 0 30px ${accentColor}60'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 0 20px ${accentColor}40'">Open Tracker.gg</a>
+      </div>
+    `;
   } else {
-    statsTrackerLink.innerHTML = '';
-    const accentColor = game === 'valorant' ? '#1DA1FF' : '#FF006E';
-    let statsHTML = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 0;">';
     for (const [key, value] of Object.entries(data.stats)) {
-      statsHTML += `
-        <div style="background: linear-gradient(135deg, rgba(29, 161, 255, 0.15) 0%, rgba(29, 161, 255, 0.05) 100%); backdrop-filter: blur(10px); padding: 20px; border-radius: 14px; border: 1px solid rgba(29, 161, 255, 0.25); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); transition: all 0.3s ease;">
-          <p style="margin: 0; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700;">${key}</p>
-          <p style="margin: 12px 0 0 0; font-size: 32px; font-weight: 900; color: ${accentColor}; text-shadow: 0 0 20px rgba(29, 161, 255, 0.4); line-height: 1;">${value}</p>
+      playerCardHTML += `
+        <div style="background: linear-gradient(135deg, ${accentColor}10 0%, ${accentColor}02 100%); padding: 15px; border-radius: 10px; border: 1px solid ${accentColor}30; text-align: center;">
+          <p style="margin: 0 0 8px 0; font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.8px; font-weight: 600;">${key}</p>
+          <p style="margin: 0; font-size: 24px; font-weight: 900; color: ${accentColor}; text-shadow: 0 0 15px ${accentColor}30;">${value}</p>
         </div>
       `;
     }
-    statsHTML += '</div>';
-    statsDisplay.innerHTML = statsHTML;
   }
-
+  
+  playerCardHTML += `
+          </div>
+        </div>
+      </div>
+    </div>
+    <style>
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+  `;
+  
+  statsOverlay.innerHTML = playerCardHTML;
   statsOverlay.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -223,28 +226,23 @@ function showPlayerStats(playerName, game) {
 /**
  * Closes the player stats modal
  */
-function closeStats() {
+function closePlayerStats() {
   const statsOverlay = document.getElementById('modal-stats');
-  if (!statsOverlay) return;
   statsOverlay.classList.remove('active');
-  document.body.style.overflow = '';
+  document.body.style.overflow = 'auto';
 }
 
-/* ---------- SMOOTH ACTIVE NAV HIGHLIGHT ---------- */
-const sections = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-links a');
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+  const statsOverlay = document.getElementById('modal-stats');
+  if (e.target === statsOverlay) {
+    closePlayerStats();
+  }
+});
 
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(sec => {
-    if (window.scrollY >= sec.offsetTop - 120) {
-      current = sec.getAttribute('id');
-    }
-  });
-  navAnchors.forEach(a => {
-    a.classList.remove('active-nav');
-    if (a.getAttribute('href') === '#' + current) {
-      a.classList.add('active-nav');
-    }
-  });
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closePlayerStats();
+  }
 });
