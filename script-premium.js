@@ -331,6 +331,9 @@ const playerProfiles = {
     country: '🇪🇸',
     countryName: 'Spain',
     main: 'Sage',
+    level: 156,
+    peakRank: 'Diamond',
+    currentRank: 'Platinum',
     about: 'The strategic mind. Numaruel has been calling strats since age 14. Born with a tactical mind that sees the map like a chess board, he leads the team through every clutch moment with ice in his veins. His calls have secured countless round wins and his presence calms the team when chaos strikes.'
   },
   marvxos: {
@@ -343,6 +346,9 @@ const playerProfiles = {
     country: '🇵🇹',
     countryName: 'Portugal',
     main: 'Raze',
+    level: 77,
+    peakRank: 'Platinum',
+    currentRank: 'Platinum',
     about: 'Aggressive and fearless. marVxos opens sites and secures kills with unmatched confidence. Known for his explosive plays and ability to create space for the team, he is the entry fragger who never backs down. His confidence is contagious and his impact is undeniable.'
   },
   solak: {
@@ -379,6 +385,9 @@ const playerProfiles = {
     country: '🇩🇪',
     countryName: 'Germany',
     main: 'Viper',
+    level: 86,
+    peakRank: 'Diamond',
+    currentRank: 'Platinum',
     about: 'Master of smoke and control. edii excels at setting up defensive positions and creating safe spaces for the team. His utility usage is precise and his map control is exceptional. A steady presence that anchors Valorant rounds.'
   },
   goonerj67: {
@@ -391,6 +400,9 @@ const playerProfiles = {
     country: '🇬🇧',
     countryName: 'United Kingdom',
     main: 'Omen',
+    level: 50,
+    peakRank: 'Platinum',
+    currentRank: 'Gold',
     about: 'Smoke specialist with incredible game sense. goonerJ67 controls the tempo of rounds with perfectly timed smokes and rotations. His ability to read the enemy and adapt is unmatched. A crucial piece of the Valorant roster.'
   },
   itzmario: {
@@ -403,6 +415,9 @@ const playerProfiles = {
     country: '🇮🇹',
     countryName: 'Italy',
     main: 'Jett',
+    level: 31,
+    peakRank: 'Gold',
+    currentRank: 'Gold',
     about: 'High-impact fragger with explosive potential. ItzReallyMario brings raw firepower and mechanical skill to every round. His aggressive plays create opportunities for the team and his clutch moments have secured countless victories.'
   },
   rezon: {
@@ -436,6 +451,9 @@ function openPlayerProfile(playerKey) {
   const detailsEl = document.getElementById('profile-details');
   const aboutEl = document.getElementById('about-text');
   const iconEl = document.getElementById('profile-icon');
+  const levelEl = document.getElementById('profile-level');
+  const peakRankEl = document.getElementById('profile-peak-rank');
+  const currentRankEl = document.getElementById('profile-current-rank');
   
   // Update icon container background
   iconContainer.style.background = `linear-gradient(135deg, ${player.iconColor} 0%, rgba(150,30,60,0.1) 100%)`;
@@ -446,6 +464,12 @@ function openPlayerProfile(playerKey) {
   roleEl.textContent = player.role;
   nameEl.textContent = player.name;
   detailsEl.textContent = `Age: ${player.age} • ${player.country} ${player.countryName} • Main: ${player.main}`;
+  
+  // Update rank stats if available
+  if (player.level) levelEl.textContent = player.level;
+  if (player.peakRank) peakRankEl.textContent = player.peakRank;
+  if (player.currentRank) currentRankEl.textContent = player.currentRank;
+  
   aboutEl.textContent = player.about;
   
   // Show modal
